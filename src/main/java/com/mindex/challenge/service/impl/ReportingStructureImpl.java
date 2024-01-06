@@ -26,7 +26,7 @@ public class ReportingStructureImpl implements ReportingStructureService {
         int totalReports = 0;
 
         if (employee.getDirectReports() != null) {
-            List<Employee> immediateReports = employee.getDirectReports(); // TODO: convert to ArrayList?
+            List<Employee> immediateReports = employee.getDirectReports();
             totalReports = immediateReports.size();
 
             // account for second level of reports by looping through employee details
