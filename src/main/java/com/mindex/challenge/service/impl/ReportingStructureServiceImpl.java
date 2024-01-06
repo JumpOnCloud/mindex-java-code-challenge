@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ReportingStructureImpl implements ReportingStructureService {
+public class ReportingStructureServiceImpl implements ReportingStructureService {
 
     @Autowired
     EmployeeService employeeService;
