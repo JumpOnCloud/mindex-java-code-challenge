@@ -1,13 +1,22 @@
 package com.mindex.challenge.data;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
 public class Compensation {
 
-    private Employee employee;
+    Employee employee;
 
     private int salary;
 
+//    @DateTimeFormat(pattern = "yyyyMMdd")
+//    @JsonDeserialize(using = DateDeserializer.class)
+    @JsonProperty("effectiveDate")
+    @JsonFormat(pattern = "yyyyMMdd")
     private LocalDate effectiveDate;
 
     public Compensation() {
