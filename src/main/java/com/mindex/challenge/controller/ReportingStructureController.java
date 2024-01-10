@@ -15,8 +15,8 @@ public class ReportingStructureController {
 
     /*
      This endpoint takes a String employee ID, fetches the employee data,
-     and returns a ReportingStructure with the total number of reports for
-     the employee with the given ID.
+     and returns a ReportingStructure with the calculated total number of
+     reports for the employee with the given ID.
      */
     @GetMapping("/reporting-structure/{id}")
     public ReportingStructure getReportingStructure(@PathVariable String id) {

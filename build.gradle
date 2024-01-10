@@ -11,6 +11,7 @@ buildscript {
 }
 
 apply plugin: 'java'
+apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
@@ -19,16 +20,42 @@ group = 'com.mindex'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+configurations {
+
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+
+	// logging
+	testRuntime.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-log4j2'
+	all*.exclude module : 'spring-boot-starter-logging'
+}
+
 repositories {
 	mavenCentral()
+}
+
+ext {
+	set('log4j2.version', '2.18.0')
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+	// annotation processing
+	compileOnly 'org.springframework.boot:spring-boot-configuration-processor'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
 	// database
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation group: 'de.bwaldvogel', name: 'mongo-java-server', version: '1.25.0'
+
+	// lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// json logging
+	runtimeOnly 'org.springframework.boot:spring-boot-starter-log4j2'
 
 	// test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

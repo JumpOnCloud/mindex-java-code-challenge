@@ -5,6 +5,8 @@ import com.mindex.challenge.service.CompensationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
+
 @RestController
 public class CompensationController {
 
@@ -13,11 +15,11 @@ public class CompensationController {
 
     /*
      This endpoint takes a request body containing salary details, persists
-     it to a salary database, and returns a Compensation object containing
+     it to the salary database, and returns a Compensation object containing
      the salary information.
      */
     @PostMapping("/salary")
-    public Compensation create(@RequestBody Compensation compensation) {
+    public Compensation create(@NotNull @RequestBody Compensation compensation) {
 
         return service.create(compensation);
     }
@@ -28,7 +30,7 @@ public class CompensationController {
      salary information for the employee with the given ID.
      */
     @GetMapping("/salary/{id}")
-    public Compensation read(@PathVariable String id) {
+    public Compensation read(@NotNull @PathVariable String id) {
 
         return service.read(id);
     }

@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "0026b931-5fd1-4415-9233-91868c95715d",
+		"name": "mindex-java-code-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "19928007"
+	},
+	"item": [
+		{
+			"name": "GET /reporting-structure",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/reporting-structure/16a596ae-edd3-4847-99fe-c4518e82c86f"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /employee",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/employee/39e0dd79-2b96-4200-bfe5-d64008f6cefa"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /salary",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employee\": {\r\n        \"employeeId\": \"b7839309-3348-463b-a7e3-5de1c168beb3\"\r\n    },\r\n    \"salary\": \"80000\",\r\n    \"effectiveDate\": \"20240131\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/salary"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /salary",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/salary/16a596ae-edd3-4847-99fe-c4518e82c86f"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employeeId\": \"1234\",\r\n    \"firstName\": \"Gail\",\r\n    \"lastName\": \"Foster\",\r\n    \"position\": \"Software Engineer\",\r\n    \"department\": \"Engineering\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/employee"
+			},
+			"response": []
+		}
+	]
+}

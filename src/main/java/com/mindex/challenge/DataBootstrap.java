@@ -1,8 +1,6 @@
 package com.mindex.challenge;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.mindex.challenge.dao.CompensationRepository;
 import com.mindex.challenge.dao.EmployeeRepository;
 import com.mindex.challenge.data.Compensation;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 @Component
@@ -32,13 +29,13 @@ public class DataBootstrap {
 
     @PostConstruct
     public void init() {
-        InputStream inputStream = this.getClass().getResourceAsStream(EMPLOYEE_DATASTORE_PATH);
-        InputStream inputStream2 = this.getClass().getResourceAsStream(SALARY_DATASTORE_PATH);
+        InputStream employeeInputStream = this.getClass().getResourceAsStream(EMPLOYEE_DATASTORE_PATH);
+        InputStream salaryInputStream = this.getClass().getResourceAsStream(SALARY_DATASTORE_PATH);
 
         Employee[] employees;
 
         try {
-            employees = objectMapper.readValue(inputStream, Employee[].class);
+            employees = objectMapper.readValue(employeeInputStream, Employee[].class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -49,13 +46,8 @@ public class DataBootstrap {
 
         Compensation[] salaries;
 
-        objectMapper.registerModule(new JavaTimeModule());
-        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-        objectMapper.setDateFormat(format);
-
         try {
-            salaries = objectMapper.readValue(inputStream2, Compensation[].class);
+            salaries = objectMapper.readValue(salaryInputStream, Compensation[].class);
             System.out.println(Arrays.toString(salaries));
         } catch (IOException e) {
             throw new RuntimeException(e);

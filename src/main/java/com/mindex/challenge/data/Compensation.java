@@ -1,7 +1,6 @@
 package com.mindex.challenge.data;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
 
@@ -11,7 +10,6 @@ public class Compensation {
 
     private int salary;
 
-    @JsonProperty("effectiveDate")
     @JsonFormat(pattern = "yyyyMMdd")
     private LocalDate effectiveDate;
 
